@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>:class 動態切換 className - Vue.js基本概述</title>
+    <link rel="stylesheet" href="../main.css"><!-- 預設值，不用加1 -->
+    <link rel="stylesheet" href="../bootstrap-grid.css">
+    <script src="../vue.js"></script>
+
+    <style>
+    .box {
+        display: inline-block;
+        width: 5rem;
+        height: 5rem;
+        margin: .25rem;
+        background-color: #f5f5f5;
+        border: 1px solid;
+        transition: transform .5s;
+    }
+    .box.rotate {
+        transform: rotate(45deg)
+    }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Vue.js基本概述 - :class 動態切換 className</h1>
+        <hr>
+        
+        <div class="step">
+            <h2></h2>
+            <div class="content">
+                <p>
+                    <b>寫法</b>
+                    :class="{ rotate : isTransform }"<br>
+                    :class="{ <i>要加入的class名稱</i> : <i>判斷式</i> }"<br>
+
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app">
+
+                    <div class="box" :class="{ rotate : isTransform }"></div><br><br>
+                    <button class="btn btn-outline-primary" @click="isTransform = !isTransform">旋轉物件</button>
+                </div>
+                <script>
+                    var app= new Vue({
+                        el: '#app',
+                        data: {
+                            isTransform: false
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+
+        <a class="back" href="../index.html">回列表</a>
+
+
+    </div>
+</body>
+</html>

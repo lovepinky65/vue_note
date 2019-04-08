@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>methods、v-on操作頁面行為 - Vue.js基本概述</title>
+    <link rel="stylesheet" href="../main.css"><!-- 預設值，不用加1 -->
+    <link rel="stylesheet" href="../bootstrap-grid.css">
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Vue.js基本概述 - methods、v-on操作頁面行為</h1>
+        <hr>
+
+        
+        <div class="step">
+            <h2></h2>
+            <div class="content">
+                <p>
+                    <b>v-on寫法</b>
+                    v-on:click="clickFunction"&emsp; (v-on:click="執行的function名稱")<br><br>
+                    <b>methods 可以綁定方法</b>
+                    methods:{ <br>
+                    &emsp;clickFunction: function(){ <br>
+                    &emsp;&emsp;執行內容 <br>
+                    &emsp;} <br>
+                    } <br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app">
+                    {{ text }} <br>
+                    <input type="text" v-model="text">
+                    <button v-on:click="clickFunction">點我顯示console.log</button><br>
+                    {{ newText}}
+                </div>
+                <script>
+                    var app = new Vue({
+                        el: '#app',
+                        data: {
+                            text: 'text值',
+                            newText: 'newText值'
+                        },
+                        methods:{
+                            clickFunction: function(){
+                                this.newText = this.text;
+                            }
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+
+        <a class="back" href="../index.html">回列表</a>
+
+
+    </div>
+</body>
+</html>

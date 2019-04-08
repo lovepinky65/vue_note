@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>建立Vue的應用程式&概念 - Vue.js基本概述，雙向單向綁定</title>
+    <link rel="stylesheet" href="../main.css"><!-- 預設值，不用加1 -->
+    <link rel="stylesheet" href="../bootstrap-grid.css">
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Vue.js基本概述 - 建立Vue的應用程式&概念</h1>
+        <hr>
+
+        
+        <div class="step">
+            <h2>Vue的基本觀念</h2>
+            <div class="content">
+                <p>
+                    <b>建立Vue的基本觀念</b>
+                    1. vue一次只能綁定一個應用程式，大部分都用id進行。<br>
+                    2. vue不能使用巢狀應用程式<br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app">
+                    {{ text }}
+                </div>
+                <script>
+                 var app = new Vue({
+                    el: '#app',
+                    data:{
+                        text: '我是一段話'
+                    }
+                 });
+                </script>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>雙向綁定，試著在下方加入html標籤</h2>
+            <div class="content">
+                <p>
+                    <b>model語法</b>
+                    v-model="message"<br><br>
+                    <b>view語法</b>
+                    v-text="message"<br>
+                    v-html="message" <i>(此寫法可以加入html標籤，但資料需為可信來源)</i><br><br>
+                </p>
+                <p id="app2">
+                    <b>範例</b>
+                    {{ message }}<br>
+                    <span v-text="message"></span><br>
+                    <span v-html="message"></span><br>
+                    <input type="text" v-model="message">
+                </p>
+                <script>
+                var app2 = new Vue({
+                    el: '#app2',
+                    data: {
+                        message: '<span>哈囉</span>'
+                    }
+                });
+                </script>
+            </div>
+        </div>
+        <div class="step">
+            <h2>單向綁定</h2>
+            <div class="content">
+                <p>
+                    <b>寫法</b>
+                    v-once="變數"<br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app3">
+                    <input type="text" v-model="list">
+                    <span v-once>{{list}}</span>
+                </div>
+                <script>
+                    var app3 = new Vue({
+                        el: '#app3',
+                        data: {
+                            list: 'aaa'
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+        <a class="back" href="../index.html">回列表</a>
+
+
+    </div>
+</body>
+</html>

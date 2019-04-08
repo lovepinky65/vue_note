@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed運算功能 - Vue.js基本概述</title>
+    <link rel="stylesheet" href="../main.css"><!-- 預設值，不用加1 -->
+    <link rel="stylesheet" href="../bootstrap-grid.css">
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Vue.js基本概述 - computed運算功能</h1>
+        <hr>
+
+        
+        <div class="step">
+            <h2></h2>
+            <div class="content">
+                <p>
+                    <b>computed寫法</b>
+                    computed: {<br>
+                    &emsp;reverseText: function(){...}<br>
+                    }<br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app">
+                    <input type="text" v-model="text"><br>
+                    {{ reverseText }}
+                </div>
+                <script>
+                    var app = new Vue({
+                        el:'#app',
+                        data:{
+                            text:''
+                        },
+                        computed: {
+                            reverseText: function(){
+                                // .split('').reverse().join()是反轉文字寫法
+                                return this.text.split('').reverse().join('');
+                            }
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+
+        <a class="back" href="../index.html">回列表</a>
+
+
+    </div>
+</body>
+</html>

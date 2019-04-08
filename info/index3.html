@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for、v-if - Vue.js基本概述</title>
+    <link rel="stylesheet" href="../main.css"><!-- 預設值，不用加1 -->
+    <link rel="stylesheet" href="../bootstrap-grid.css">
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Vue.js基本概述 - v-for、v-if</h1>
+        <hr>
+
+        <div class="step">
+            <h2>顯示資料</h2>
+            <div class="content">
+                <p>
+                    <b>顯示資料寫法</b>
+                    &lt;pre&gt;{{ this.list }}&lt;/pre&gt;<br><br>
+                </p>
+                <div id="content">
+                    資料顯示
+                    <pre>{{ this.list }}</pre><br>
+                </div>
+                <script>
+                    var content = new Vue({
+                        el: '#content',
+                        data: {
+                            list: [
+                                {
+                                    name: '小名',
+                                    age: 18
+                                },
+                                {
+                                    name: '媽媽',
+                                    age: 60
+                                },
+                                {
+                                    name: '阿姨',
+                                    age: 32
+                                }
+                            ]
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+        <div class="step">
+            <h2>v-for</h2>
+            <div class="content">
+                <p>
+                    <b>v-for 基本寫法</b>
+                    v-for="item in list"&emsp;(v-for="<i>自訂變數</i> in <i>陣列名</i>")<br><br>
+                    <b>v-for 索引寫法(從0開始)</b>
+                    v-for="(item,index) in list"&emsp;(v-for="(<i>自訂變數</i>,<i>index</i>) in <i>陣列名</i>")<br><br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app">
+                    基本寫法
+                    <ul v-for="item in list">
+                        <li>{{ item.name }} 的年齡是 {{ item.age }}</li>
+                    </ul>
+                    <br><br>
+                    索引寫法(從0開始)
+                    <ul v-for="(item,index) in list">
+                        <li>{{ index+1 }} - {{ item.name }} 的年齡是 {{ item.age }}</li>
+                    </ul>
+                </div>
+                <script>
+                    var app = new Vue({
+                        el: '#app',
+                        data: {
+                            list: [
+                                {
+                                    name: '小名',
+                                    age: 18
+                                },
+                                {
+                                    name: '媽媽',
+                                    age: 60
+                                },
+                                {
+                                    name: '阿姨',
+                                    age: 32
+                                }
+                            ]
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+        <div class="step">
+            <h2>v-if</h2>
+            <div class="content">
+                <p>
+                    <b>v-if 寫法</b>
+                    v-if="item.age &lt; 50"<br><br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app2">
+                    判斷
+                    <ul v-for="(item,index) in list" v-if="item.age < 50">
+                        <li>{{ index+1 }} - {{ item.name }} 的年齡是 {{ item.age }}</li>
+                    </ul>
+                </div>
+                <script>
+                    var app2 = new Vue({
+                        el: '#app2',
+                        data: {
+                            list: [
+                                {
+                                    name: '小名',
+                                    age: 18
+                                },
+                                {
+                                    name: '媽媽',
+                                    age: 60
+                                },
+                                {
+                                    name: '阿姨',
+                                    age: 32
+                                }
+                            ]
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+        <a class="back" href="../index.html">回列表</a>
+
+
+    </div>
+</body>
+</html>

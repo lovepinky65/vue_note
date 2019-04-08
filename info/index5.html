@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修飾符、縮寫 - Vue.js基本概述</title>
+    <link rel="stylesheet" href="../main.css"><!-- 預設值，不用加1 -->
+    <link rel="stylesheet" href="../bootstrap-grid.css">
+    <script src="../vue.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Vue.js基本概述 - 修飾符、縮寫</h1>
+        <hr>
+
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <div class="step">
+            <h2>事件修饰符</h2>
+            <div class="content">
+                <p>
+                    <b>事件修饰符寫法</b>
+                    v-on:click.<i>prevent</i>="事件名稱"&emsp;(移除預設事件)<br><br>
+                    <b>按键修饰符寫法</b>
+                    v-on:<i>keyup.enter</i>="事件名稱"&emsp;(按下enter案件觸發事件)<br><br>
+                    <a target="_blank" href="https://cn.vuejs.org/v2/guide/events.html">其他事件修饰符&按键修饰符參考</a><br><br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app">
+                    {{ text }} <br>
+                    <input type="text" v-model="text" v-on:keyup.enter="clickFunction">
+                    <a href="#" v-on:click.prevent="clickFunction">點我</a><br>
+                    {{ newText}}
+                </div>
+                <script>
+                    var app = new Vue({
+                        el: '#app',
+                        data: {
+                            text: 'text值',
+                            newText: 'newText值'
+                        },
+                        methods:{
+                            clickFunction: function(e){
+                                this.newText = this.text;
+                            }
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+
+        <div class="step">
+            <h2>縮寫</h2>
+            <div class="content">
+                <p>
+                    <b>縮寫寫法</b>
+                    v-bind:href => :href<br>
+                    v-on:cilck => @click<br>
+                </p>
+                <p>
+                    <b>範例</b>
+                </p>
+                <div id="app2">
+                    <a :href="url">點我導連結</a><br>
+                    <a @click.prevent="clickFunction">點我帶入值</a><br>
+                    {{ newText}}
+                </div>
+                <script>
+                    var app2 = new Vue({
+                        el: '#app2',
+                        data: {
+                            url: 'https://cn.vuejs.org/v2/guide/events.html',
+                            newText: ''
+                        },
+                        methods:{
+                            clickFunction: function(e){
+                                this.newText = '帶入值';
+                            }
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+        <a class="back" href="../index.html">回列表</a>
+
+
+    </div>
+</body>
+</html>
